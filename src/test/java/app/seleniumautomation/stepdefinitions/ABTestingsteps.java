@@ -25,16 +25,17 @@ public class ABTestingsteps {
 	   prop1=Utilities.readPropertiesFile("./TestData.properties");
 	   driver=BrowserandURLConfiguration.BrowserandURLConfig(prop1.getProperty("browsername"), prop1.getProperty("url"));
    }
-   @When("^I click on AB Testing then A/B Test Variation 1 and Elemental Selenium$")
-   public void i_click_on_AB_Testing() throws IOException {
+   @When("^I click on AB Testing then Elemental Selenium$")
+   public void i_click_on_ab_testing_then_elemental_selenium() throws IOException, InterruptedException {
 	   prop2=Utilities.readPropertiesFile("./locators.properties");
-	   WebElement ABTestinglink=driver.findElement(By.linkText("A/BTestinglink"));
+	   Thread.sleep(5000);
+	   WebElement ABTestinglink=driver.findElement(By.xpath(prop2.getProperty("A_B_Testing_link")));
 	   ActionsClass.clickWebElement(ABTestinglink);
-	   System.out.println("A/B test variation 1 and ElementalSeleniumlink should be display");
+	   System.out.println("A_B test variation 1 and ElementalSeleniumlink should be display");
    }
-   @Then("^validate Elemental Selenium link$")
-   public void validate_Elemental_Selenium_link() {
-	   WebElement ElementalSeleniumlink=driver.findElement(By.linkText("ElementalSeleniumlink"));
+   @Then("^validate Elemental Selenium$")
+   public void validate_Elemental_Selenium() {
+	   WebElement ElementalSeleniumlink=driver.findElement(By.linkText(prop2.getProperty("ElementalSeleniumlink")));
 	   boolean ElementalSelenium=ActionsClass.checkElementDisplayed(ElementalSeleniumlink);
 	   assertTrue("Elemental Selenium", ElementalSelenium);
 	   driver.quit();
