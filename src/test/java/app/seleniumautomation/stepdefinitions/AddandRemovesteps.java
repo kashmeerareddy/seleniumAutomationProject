@@ -33,20 +33,20 @@ public class AddandRemovesteps {
 		WebElement element = driver.findElement(By.linkText(prop2.getProperty("AddRemoveElementslink")));
 		ActionsClass.clickWebElement(element);
 		
-		WebElement AddElementbutton = driver.findElement(By.xpath(prop2.getProperty("//button[@onclick='addElement()']")));
+		WebElement AddElementbutton = driver.findElement(By.xpath(prop2.getProperty("AddElementsbutton")));
 		ActionsClass.clickWebElement(AddElementbutton);
 		System.out.println("Delete button displayed");
 	}
 	@And("^I click on delete button then delete button should disappear$")
 	public void i_click_on_delete_button_then_delete_button_should_disappear()  {
-		WebElement Deletebutton = driver.findElement(By.xpath(prop2.getProperty("//button[@class='added-manually']")));
+		WebElement Deletebutton = driver.findElement(By.xpath(prop2.getProperty("Deletebutton")));
 		ActionsClass.clickWebElement(Deletebutton);
 		System.out.println("Delete button disappeared");
 		
 	}
 	@Then("^validate Elemental Selenium link$")
 	public void validate_Elemental_Selenium_link() {
-		WebElement ElementalSeleniumlink = driver.findElement(By.linkText(prop2.getProperty("Elemental Selenium")));
+		WebElement ElementalSeleniumlink = driver.findElement(By.linkText(prop2.getProperty("ElementalSeleniumlink")));
 		boolean ElementalSelenium = ActionsClass.checkElementDisplayed(ElementalSeleniumlink);
 		assertTrue("Elemental Selenium", ElementalSelenium);
 		driver.quit();
