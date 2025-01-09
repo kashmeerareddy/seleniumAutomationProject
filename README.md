@@ -1,2 +1,2 @@
-# seleniumAutomationProject
-This is selenium automation project with testng, maven and cucumber BBD
+# selenium_maven_cucumber_testng_project
+Selenium maven cucumber testng project. 
