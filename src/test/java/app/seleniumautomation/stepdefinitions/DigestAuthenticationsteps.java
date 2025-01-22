@@ -37,6 +37,9 @@ public class DigestAuthenticationsteps {
 		WebElement digestauthentication = driver.findElement(By.xpath(prop2.getProperty("digest_authentication_link")));
 		ActionsClass.clickWebElement(digestauthentication);
 		
+		
+		ActionsClass.enterTextWebElement(digestauthentication, prop1.getProperty("digestusername"));
+		ActionsClass.enterTextUsingActions(digestauthentication, prop1.getProperty("digestpassword"));
 	
 	   /*    WebElement usernamefield= wait .until(ExpectedConditions.visibilityOf(usernamefield));
 		ActionsClass.enterTextUsingActions(usernamefield, prop1.getProperty("digestusername"));
