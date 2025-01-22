@@ -42,5 +42,9 @@ public class ActionsClass {
                .sendKeys(text)         // Send the text
                .perform();
 	}
-	
+	public static void draganddrop(WebElement sourceelement, WebElement targetelement) {
+		Actions action=new Actions(driver);
+	       action.dragAndDrop(sourceelement, targetelement).perform();
+
+	}
 }
