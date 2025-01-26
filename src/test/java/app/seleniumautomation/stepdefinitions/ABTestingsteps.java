@@ -30,7 +30,7 @@ public class ABTestingsteps {
 	   prop2=Utilities.readPropertiesFile("./locators.properties");
 	   Thread.sleep(5000);
 	   WebElement ABTestinglink=driver.findElement(By.xpath(prop2.getProperty("A_B_Testing_link")));
-	   ActionsClass.clickWebElement(ABTestinglink);
+	   ActionsClass.clickWebElement(driver,ABTestinglink);
 	   System.out.println("A_B test variation 1 and ElementalSeleniumlink should be display");
    }
    @Then("^validate Elemental Selenium$")

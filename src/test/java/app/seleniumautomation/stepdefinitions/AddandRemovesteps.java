@@ -31,16 +31,16 @@ public class AddandRemovesteps {
 		Thread.sleep(5000);
 		
 		WebElement element = driver.findElement(By.linkText(prop2.getProperty("AddRemoveElementslink")));
-		ActionsClass.clickWebElement(element);
+		ActionsClass.clickWebElement(driver,element);
 		
 		WebElement AddElementbutton = driver.findElement(By.xpath(prop2.getProperty("AddElementsbutton")));
-		ActionsClass.clickWebElement(AddElementbutton);
+		ActionsClass.clickWebElement(driver,AddElementbutton);
 		System.out.println("Delete button displayed");
 	}
 	@And("^I click on delete button then delete button should disappear$")
 	public void i_click_on_delete_button_then_delete_button_should_disappear()  {
 		WebElement Deletebutton = driver.findElement(By.xpath(prop2.getProperty("Deletebutton")));
-		ActionsClass.clickWebElement(Deletebutton);
+		ActionsClass.clickWebElement(driver,Deletebutton);
 		System.out.println("Delete button disappeared");
 		
 	}

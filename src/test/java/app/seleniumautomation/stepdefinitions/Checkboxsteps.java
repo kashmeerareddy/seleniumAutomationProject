@@ -35,14 +35,14 @@ import app.seleniumautomation.utilities.Utilities;
 			Thread.sleep(5000);
 			
 			WebElement checkbox = driver.findElement(By.xpath(prop2.getProperty("checkbox_link")));
-			ActionsClass.clickWebElement(checkbox);
+			ActionsClass.clickWebElement(driver,checkbox);
 			
 			if(driver.findElement(By.xpath(prop2.getProperty("checkbox1"))).isSelected()) {
 				System.out.println("Checkbox is already selected");
 			}
 			else {
 				WebElement checkbox1=driver.findElement(By.xpath(prop2.getProperty("checkbox1")));
-				ActionsClass.clickWebElement(checkbox1);
+				ActionsClass.clickWebElement(driver,checkbox1);
 				System.out.println(driver.findElement(By.xpath(prop2.getProperty("checkbox1"))).isSelected());
 				System.out.println("After click Checkbox1 is selected");
 				}
@@ -53,7 +53,7 @@ import app.seleniumautomation.utilities.Utilities;
 					System.out.println("Before performing click operation for Checkbox2");
 					System.out.println("Checkbox 2 is already selected");
 					WebElement checkbox2=driver.findElement(By.xpath(prop2.getProperty("checkbox2")));
-					ActionsClass.clickWebElement(checkbox2);
+					ActionsClass.clickWebElement(driver,checkbox2);
 					System.out.println("After performing click operation for Checkbox2");
 					System.out.println("Checkbox2 is unselected");
 				}

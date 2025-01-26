@@ -30,22 +30,23 @@ public class Draganddropstep {
 		Thread.sleep(5000);
 		
 		WebElement draganddrop = driver.findElement(By.linkText(prop2.getProperty("draganddrop")));
-		ActionsClass.clickWebElement(draganddrop);
+		ActionsClass.clickWebElement(driver,draganddrop);
 		
 		WebElement sourceelement = driver.findElement(By.id(prop2.getProperty("sourceelement")));
 		
-		WebElement targetelement = driver.findElement(By.id(prop2.getProperty("targetelement")));
-		ActionsClass.draganddrop(sourceelement, targetelement);
+		WebElement targetelement = driver.findElement(By.id(prop2.getProperty("targetelemt")));
+		ActionsClass.draganddrop(driver,sourceelement, targetelement);
 		
 		
 		
 	}
 	@Then("^validate sourceelement text and targetelement text$")
 	public void validate_text() {
-		boolean issourceelemnt = driver.findElement(By.xpath(prop2.getProperty("targetelemt"))).isDisplayed();
-        boolean istargetelement = driver.findElement(By.xpath(prop2.getProperty("sourceelement"))).isDisplayed();
+		boolean issourceelemnt = driver.findElement(By.id(prop2.getProperty("targetelemt"))).isDisplayed();
+        boolean istargetelement = driver.findElement(By.id(prop2.getProperty("sourceelement"))).isDisplayed();
 
-      System.out.println();
+      System.out.println(driver.findElement(By.id(prop2.getProperty("sourceelement"))).getText());
+      System.out.println(driver.findElement(By.id(prop2.getProperty("targetelemt"))).getText());
        		driver.quit();
 	}
 }

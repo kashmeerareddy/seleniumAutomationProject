@@ -13,7 +13,7 @@ public class ActionsClass {
         this.driver = driver;
     }
 	
-	public static void clickWebElement(WebElement element)
+	public static void clickWebElement(WebDriver driver,WebElement element)
 	{
 		element.click();
 	}
@@ -25,11 +25,9 @@ public class ActionsClass {
 	public static boolean checkElementDisplayed(WebElement element) {
 		return element.isDisplayed();
 	}
-	public static void contextclick(WebElement element) {
+	public static void contextclick(WebDriver driver,WebElement element) {
 		 Actions actions = new Actions(driver);
-	        actions.contextClick(element).perform();
-		//element.click();
-		
+	      actions.contextClick(element).build().perform();
 	}
 	public static void hoverOverElement(WebElement element) {
         Actions actions = new Actions(driver);
@@ -42,7 +40,7 @@ public class ActionsClass {
                .sendKeys(text)         // Send the text
                .perform();
 	}
-	public static void draganddrop(WebElement sourceelement, WebElement targetelement) {
+	public static void draganddrop(WebDriver driver,WebElement sourceelement, WebElement targetelement) {
 		Actions action=new Actions(driver);
 	       action.dragAndDrop(sourceelement, targetelement).perform();
 
