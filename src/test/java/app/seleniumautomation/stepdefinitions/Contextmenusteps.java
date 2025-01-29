@@ -2,6 +2,7 @@ package app.seleniumautomation.stepdefinitions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -34,10 +35,12 @@ public class Contextmenusteps {
 		Thread.sleep(5000);
 		
 		WebElement contextmenulink=driver.findElement(By.linkText(prop2.getProperty("Context_Menu")));
+
 		ActionsClass.clickWebElement(driver, contextmenulink);
 		
 		WebElement contextmenubox=driver.findElement(By.xpath(prop2.getProperty("Context_menu_box")));
 		ActionsClass.contextclick(driver, contextmenubox);
+
 		
 		System.out.println("Alert box will display");
 	}

@@ -29,6 +29,7 @@ public class ActionsClass {
 	}
 	public static void contextclick(WebDriver driver,WebElement element) {
 		 Actions actions = new Actions(driver);
+
 	        actions.contextClick(element).perform();
 		
 	}
@@ -43,9 +44,11 @@ public class ActionsClass {
                .sendKeys(text)         // Send the text
                .perform();
 	}
+
 	public static void draganddrop(WebDriver driver,WebElement source, WebElement target) {
 		Actions actions=new Actions(driver);
 	       actions.dragAndDrop(source, target).perform();
+
 
 	}
 	public static void moveByOffset(WebDriver driver) {
