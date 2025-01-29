@@ -1,5 +1,6 @@
 package app.seleniumautomation.stepdefinitions;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
@@ -24,7 +25,7 @@ public class Contextmenusteps {
 	public WebDriver driver;	
 	public static Properties prop1,prop2;
 	@Given("^I navigate to the context menu link in the url$")
-	public void navigate_to_context_menu() throws IOException {
+	public void navigate_to_context_menu_link_in_the_url() throws IOException {
 		prop1 = Utilities.readPropertiesFile("./TestData.properties");
 		driver = BrowserandURLConfiguration.BrowserandURLConfig(prop1.getProperty("browsername"), prop1.getProperty("url"));
 	}
@@ -34,10 +35,12 @@ public class Contextmenusteps {
 		Thread.sleep(5000);
 		
 		WebElement contextmenulink=driver.findElement(By.linkText(prop2.getProperty("Context_Menu")));
-		ActionsClass.clickWebElement(driver,contextmenulink);
+
+		ActionsClass.clickWebElement(driver, contextmenulink);
 		
 		WebElement contextmenubox=driver.findElement(By.xpath(prop2.getProperty("Context_menu_box")));
-		ActionsClass.contextclick(driver,contextmenubox);
+		ActionsClass.contextclick(driver, contextmenubox);
+
 		
 		System.out.println("Alert box will display");
 	}

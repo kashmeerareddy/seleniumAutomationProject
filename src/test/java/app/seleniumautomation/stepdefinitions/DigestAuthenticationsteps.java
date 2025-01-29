@@ -38,7 +38,25 @@ public class DigestAuthenticationsteps {
 	public void i_click_on_digest_authentication_and_enter_credentials() throws InterruptedException, IOException {
 		prop2 = Utilities.readPropertiesFile("./locators.properties");
 		Thread.sleep(5000);
+
+		
+		WebElement digestauthentication = driver.findElement(By.xpath(prop2.getProperty("digest_authentication_link")));
+		ActionsClass.clickWebElement(driver, digestauthentication);
+		
 		driver.get("https://admin:admin@the-internet.herokuapp.com/digest_auth");
+		//ActionsClass.enterTextWebElement(digestauthentication, prop1.getProperty("digestusername"));
+		//ActionsClass.enterTextUsingActions(digestauthentication, prop1.getProperty("digestpassword"));
+	
+	   /*    WebElement usernamefield= wait .until(ExpectedConditions.visibilityOf(usernamefield));
+		ActionsClass.enterTextUsingActions(usernamefield, prop1.getProperty("digestusername"));
+		WebElement passwordfield= wait .until(ExpectedConditions.visibilityOf(passwordfield));
+		ActionsClass.enterTextUsingActions(passwordfield, prop1.getProperty("digestpassword"));
+		WebElement siginbutton= wait .until(ExpectedConditions.visibilityOf(siginbutton));*/
+		
+		//WebElement signinbutton=ActionsClass.hoverOverElement(siginbutton);
+		//ActionsClass.clickWebElement(siginbutton);
+		
+
 	}
 	@Then("^validate digest auth$")
 	public void validate_digest_auth() {

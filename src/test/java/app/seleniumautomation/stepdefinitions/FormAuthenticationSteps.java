@@ -26,7 +26,9 @@ public class FormAuthenticationSteps {
 		Thread.sleep(5000);
 		
 		WebElement element = driver.findElement(By.xpath(prop2.getProperty("form_authentication_link")));
-		ActionsClass.clickWebElement(driver,element);
+
+		ActionsClass.clickWebElement(driver, element);
+
 		
 		WebElement username = driver.findElement(By.id(prop2.getProperty("form_authentication_username")));
 		ActionsClass.enterTextWebElement(username, prop1.getProperty("username"));
