@@ -73,6 +73,11 @@
     </dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+	<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-spring</artifactId>
+    <version>4.0.0</version>
+    </dependency>
 	</dependencies>
 	<build>
 		<plugins>

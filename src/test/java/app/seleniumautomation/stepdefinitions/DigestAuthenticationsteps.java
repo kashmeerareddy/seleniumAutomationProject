@@ -35,11 +35,11 @@ public class DigestAuthenticationsteps {
 		Thread.sleep(5000);
 		
 		WebElement digestauthentication = driver.findElement(By.xpath(prop2.getProperty("digest_authentication_link")));
-		ActionsClass.clickWebElement(digestauthentication);
+		ActionsClass.clickWebElement(driver, digestauthentication);
 		
-		
-		ActionsClass.enterTextWebElement(digestauthentication, prop1.getProperty("digestusername"));
-		ActionsClass.enterTextUsingActions(digestauthentication, prop1.getProperty("digestpassword"));
+		driver.get("https://admin:admin@the-internet.herokuapp.com/digest_auth");
+		//ActionsClass.enterTextWebElement(digestauthentication, prop1.getProperty("digestusername"));
+		//ActionsClass.enterTextUsingActions(digestauthentication, prop1.getProperty("digestpassword"));
 	
 	   /*    WebElement usernamefield= wait .until(ExpectedConditions.visibilityOf(usernamefield));
 		ActionsClass.enterTextUsingActions(usernamefield, prop1.getProperty("digestusername"));
@@ -49,13 +49,11 @@ public class DigestAuthenticationsteps {
 		
 		//WebElement signinbutton=ActionsClass.hoverOverElement(siginbutton);
 		//ActionsClass.clickWebElement(siginbutton);
-	
-		
 		
 	}
 	@Then("^validate digest auth$")
 	public void validate_digest_auth() {
-		WebElement digestauth = driver.findElement(By.linkText(prop2.getProperty("digest_auth")));
+		WebElement digestauth = driver.findElement(By.xpath(prop2.getProperty("digest_auth_text")));
 		boolean congratulations = ActionsClass.checkElementDisplayed(digestauth);
 		assertTrue("Congratulations! You must have the proper credentials.", congratulations);
 		driver.quit();

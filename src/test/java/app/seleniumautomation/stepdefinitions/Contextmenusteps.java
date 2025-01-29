@@ -1,5 +1,6 @@
 package app.seleniumautomation.stepdefinitions;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class Contextmenusteps {
 	public WebDriver driver;	
 	public static Properties prop1,prop2;
 	@Given("^I navigate to the context menu link in the url$")
-	public void navigate_to_context_menu() throws IOException {
+	public void navigate_to_context_menu_link_in_the_url() throws IOException {
 		prop1 = Utilities.readPropertiesFile("./TestData.properties");
 		driver = BrowserandURLConfiguration.BrowserandURLConfig(prop1.getProperty("browsername"), prop1.getProperty("url"));
 	}
@@ -32,21 +33,21 @@ public class Contextmenusteps {
 		prop2 = Utilities.readPropertiesFile("./locators.properties");
 		Thread.sleep(5000);
 		
-		WebElement contextmenulink=driver.findElement(By.linkText(prop2.getProperty("Context_Menu_link")));
-		ActionsClass.clickWebElement(contextmenulink);
+		WebElement contextmenulink=driver.findElement(By.linkText(prop2.getProperty("Context_Menu")));
+		ActionsClass.clickWebElement(driver, contextmenulink);
 		
 		WebElement contextmenubox=driver.findElement(By.xpath(prop2.getProperty("Context_menu_box")));
-		ActionsClass.contextclick(contextmenubox);
+		ActionsClass.contextclick(driver, contextmenubox);
 		
 		System.out.println("Alert box will display");
 	}
 	@Then("^validate the alert$")
-	public void validate_the_alert() {
-		
+	public void validate_the_alert() throws InterruptedException {
+		Thread.sleep(5000);
         Alert cm=driver.switchTo().alert();
+        assertEquals(cm.getText(),"You selected a context menu");
         System.out.println(cm.getText());
         cm.accept();
-        assertTrue("You selected a context menu", cm.getText().contains("You selected a context menu"));
         driver.quit();
 	}
 }

@@ -1,5 +1,7 @@
 package app.seleniumautomation.actions;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,7 +15,7 @@ public class ActionsClass {
         this.driver = driver;
     }
 	
-	public static void clickWebElement(WebElement element)
+	public static void clickWebElement(WebDriver driver,WebElement element)
 	{
 		element.click();
 	}
@@ -25,10 +27,9 @@ public class ActionsClass {
 	public static boolean checkElementDisplayed(WebElement element) {
 		return element.isDisplayed();
 	}
-	public static void contextclick(WebElement element) {
+	public static void contextclick(WebDriver driver,WebElement element) {
 		 Actions actions = new Actions(driver);
 	        actions.contextClick(element).perform();
-		//element.click();
 		
 	}
 	public static void hoverOverElement(WebElement element) {
@@ -42,9 +43,15 @@ public class ActionsClass {
                .sendKeys(text)         // Send the text
                .perform();
 	}
-	public static void draganddrop(WebElement sourceelement, WebElement targetelement) {
-		Actions action=new Actions(driver);
-	       action.dragAndDrop(sourceelement, targetelement).perform();
+	public static void draganddrop(WebDriver driver,WebElement source, WebElement target) {
+		Actions actions=new Actions(driver);
+	       actions.dragAndDrop(source, target).perform();
 
 	}
-}
+	public static void moveByOffset(WebDriver driver) {
+		Actions actions=new Actions(driver);
+		 actions.moveByOffset(0, -100).build().perform();
+	}
+
+		
+	}
