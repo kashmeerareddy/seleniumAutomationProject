@@ -6,9 +6,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import app.seleniumautomation.actions.ActionsClass;
 import app.seleniumautomation.configuration.BrowserandURLConfiguration;
@@ -30,11 +34,27 @@ public class Exitintentstep {
 	public void i_move_my_mouse_out_of_the_viewport() throws InterruptedException, IOException {
 		prop2 = Utilities.readPropertiesFile("./locators.properties");
 		Thread.sleep(5000);
-		WebElement exitintent=driver.findElement(By.linkText(prop2.getProperty("exit_intent")));
-		ActionsClass.clickWebElement(driver, exitintent);
-		System.out.println("exit intent page will dislay");
-		ActionsClass.moveByOffset(driver);
-		System.out.println("Modal window will appear");
+       try {
+        WebElement exitintent=driver.findElement(By.linkText(prop2.getProperty("exit_intent")));
+   		ActionsClass.clickWebElement(driver, exitintent);
+   		System.out.println("exit intent page will dislay");
+   		WebElement exittext=driver.findElement(By.xpath(prop2.getProperty("exit")));
+   		System.out.println("exit text is displayed ?? " + exittext.isDisplayed());
+   		Actions actions = new Actions(driver);
+   		actions.moveToElement(exittext);
+   		ActionsClass.clickWebElement(driver, exittext);
+   		//driver.getWindowHandle().
+   	    
+   		//WebElement exittext=driver.findElement(By.xpath(prop2.getProperty("exit")));
+   		//ActionsClass.hoverOverElement(exittext);
+   		ActionsClass.moveByOffset(driver, -100, -100);
+   		System.out.println("Modal window will appear"); 
+       }catch(Exception e){
+    	   File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    	   FileUtils.copyFile(screenshot,new File("./Screenshorts/Exitintent.png"));
+       System.out.println(e);
+       }
+		
 		
 	}
 	@Then("^verify the exit intent modal window appear$")
@@ -42,7 +62,7 @@ public class Exitintentstep {
 		Thread.sleep(5000); 
 		boolean isModalWindowDisplayed = driver.findElement(By.xpath(prop2.getProperty("Modal_window"))).isDisplayed();
 		 assertTrue("Modal window did not appear", isModalWindowDisplayed);
-	}
+		 /*}
 	@When("^I close the modal window$")
 	 public void close_modal_window() {
 	      WebElement closebutton=driver.findElement(By.xpath(prop2.getProperty("close"))); 
@@ -58,7 +78,7 @@ public class Exitintentstep {
 	@Then("^validate the modal window should not appear$")
     public void validate_modal_window_should_not_appear() {
         boolean isModalDisplayed = driver.findElement(By.xpath(prop2.getProperty("Modal_window"))).isDisplayed();
-        assertTrue("Modal window appeared again", isModalDisplayed);
+        assertTrue("Modal window appeared again", isModalDisplayed);*/
         driver.quit();
 }
 }

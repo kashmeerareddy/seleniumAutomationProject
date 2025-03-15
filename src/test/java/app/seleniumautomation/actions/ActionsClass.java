@@ -29,11 +29,10 @@ public class ActionsClass {
 	}
 	public static void contextclick(WebDriver driver,WebElement element) {
 		 Actions actions = new Actions(driver);
-
 	        actions.contextClick(element).perform();
 		
 	}
-	public static void hoverOverElement(WebElement element) {
+	public static void hoverOverElement(WebElement element, WebDriver driver) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();  // Move mouse to element
     }
@@ -44,17 +43,17 @@ public class ActionsClass {
                .sendKeys(text)         // Send the text
                .perform();
 	}
-
 	public static void draganddrop(WebDriver driver,WebElement source, WebElement target) {
 		Actions actions=new Actions(driver);
 	       actions.dragAndDrop(source, target).perform();
 
-
 	}
-	public static void moveByOffset(WebDriver driver) {
+	public static void moveByOffset(WebDriver driver, int xOffSet, int yOffSet) {
 		Actions actions=new Actions(driver);
-		 actions.moveByOffset(0, -100).build().perform();
+		 actions.moveByOffset(xOffSet, yOffSet).build().perform();
 	}
-
-		
+	public static void slider(WebDriver driver, WebElement Slider) {
+		Actions actions = new Actions(driver);
+        actions.dragAndDropBy(Slider, 50, 0).perform(); 
+	}
 	}

@@ -1,3 +1,5 @@
+
+@Filedownload @all
 Feature: File download functionality
 
   Scenario: validate the File download functionaity
