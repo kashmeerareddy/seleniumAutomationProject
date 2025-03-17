@@ -6,7 +6,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.io.File;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -41,16 +45,21 @@ public class FileDownloadstep {
 		
 	}
 	@Then("^validate the downloaded file$")
-	public void validate_the_downloaded_file() throws InterruptedException {
-		File downloadedFile = new File(downloadDirectory+ "/some-file.txt");
+	public void validate_the_downloaded_file() throws InterruptedException, IOException {
+		File downloadedFile = new File(downloadDirectory, "some-file.txt");
 		Thread.sleep(30000);
 		
 		boolean isDownloaded = false;
-		assertTrue("file is not downloaded", isDownloaded);
+	
 		if(downloadedFile.exists()) {
 			isDownloaded = true;
+			System.out.println("File is downloaded at " + downloadedFile.getPath());
 		}
+		assertTrue("file is not downloaded", isDownloaded);
 		System.out.println("File downloaded successfully.");
+		//File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		//FileUtils.copyFile(downloadedFile, new File("C:\\frameworks\\seleniumAutomationProject\\Screenshots\\screenshot1.png"));
+		//System.out.println("Screenshot saved to: " + downloadedFile.getAbsolutePath());
 		driver.quit();
 	}
 }

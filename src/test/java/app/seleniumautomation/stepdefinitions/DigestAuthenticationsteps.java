@@ -2,17 +2,12 @@ package app.seleniumautomation.stepdefinitions;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,7 +33,6 @@ public class DigestAuthenticationsteps {
 	public void i_click_on_digest_authentication_and_enter_credentials() throws InterruptedException, IOException {
 		prop2 = Utilities.readPropertiesFile("./locators.properties");
 		Thread.sleep(5000);
-
 		
 		WebElement digestauthentication = driver.findElement(By.xpath(prop2.getProperty("digest_authentication_link")));
 		ActionsClass.clickWebElement(driver, digestauthentication);
@@ -56,7 +50,6 @@ public class DigestAuthenticationsteps {
 		//WebElement signinbutton=ActionsClass.hoverOverElement(siginbutton);
 		//ActionsClass.clickWebElement(siginbutton);
 		
-
 	}
 	@Then("^validate digest auth$")
 	public void validate_digest_auth() {

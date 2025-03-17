@@ -36,7 +36,6 @@ public class Draganddropstep {
 		
 		WebElement draganddrop = driver.findElement(By.linkText(prop2.getProperty("draganddrop")));
 		ActionsClass.clickWebElement(driver,draganddrop);
-
 		
 		WebElement source = driver.findElement(By.id(prop2.getProperty("source")));
 		
@@ -46,7 +45,6 @@ public class Draganddropstep {
 	     //  actions.dragAndDrop(source, target).perform();
 		
 	}
-
 	@Then("^validate drag and drop functionality$")
 	public void validate_drag_and_drop_functionality() throws InterruptedException {
 		
@@ -56,9 +54,6 @@ public class Draganddropstep {
     	 System.out.println(driver.findElement(By.id(prop2.getProperty("source"))).getText());
          System.out.println(driver.findElement(By.id(prop2.getProperty("target"))).getText());
         driver.quit();
-
-	
-
 	}
 }
 
